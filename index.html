@@ -175,7 +175,8 @@ Template for
 						
 						<div class="yui-gf"> <!--// This is a section -->
 							<div class="yui-u">
-								<h2>Code Appendix</h2> <!--// put your heading here -->					
+								<h2>Code Appendix</h2> <!--// put your heading here -->	
+								<h3>Used in with the apriltag library and the OpenCV2 library</h3>
 							</div>
 						</div><!--// Your section has ended -->
 				
@@ -762,13 +763,9 @@ while True:
 
     pygame.display.flip()
 								</pre>
-								<h3>file_analyze bash script: </h3>
-								<pre>
-#!/bin/bash
-sudo python file_analyze.py $1 &
-								</pre>
 							</div>
 						</div>
+				
 						<div class="yui-gf"> <!--// This is a section -->
 							<div class="yui-u">
 								<h3>file_analyze.py</h3> <!--// put your heading here -->					
@@ -802,6 +799,11 @@ if "detection" in line :
 file = open("done_" + num_name + ".txt", "w+")
 file.write("TAG: " + str(tag) + "\n")
 file.close()
+								</pre>
+								<h3>file_analyze bash script: </h3>								<h3>file_analyze bash script: </h3>
+								<pre>
+#!/bin/bash
+sudo python file_analyze.py $1 &
 								</pre>
 							</div>
 						</div><!--// Your section has ended -->
