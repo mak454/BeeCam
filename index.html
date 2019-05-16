@@ -55,9 +55,9 @@ Template for
 						</div><!--// Your section has ended -->
 					
 						<div class="yui-gf"> <!--// This is a section -->
-							<div class="yui-u first">
+							<div class="yui-u">
 								<h2>Materials</h2> <!--// put your heading here -->
-                                				<p>2pairsofinfraredbreak-beamsensors($1.95 each)</p>
+                                				<p>2 pairs of infrared break-beam sensors ($1.95 each)</p>
                                 				<p>2 Pi Camera V2s ($29.95 each)</p>
                                 				<p>2 LED light rings ($16.99 each)</p>
                                 				<p>2 Raspberry Pi B+s ($34.99 each)</p>
@@ -116,10 +116,25 @@ Template for
 								<p>This code corresponds to the side camera and its respective light ring. This program is actually much simpler than the top camera because the image analysis we are doing on it runs much faster, eliminating the need for multithreading (although it could potentially be improved by running slower, more advanced algorithms and using multithreading as well). In this case we have two lists, one that is a string of the count concatenated with the boolean of whether it has pollen or not, the other is a timestamp for every time the sensor is tripped.</p>
 								<p>Another feature of this program is that it begins with a default image and a filtered version of the default image so that the user understands how the filtering works (see code snippet 6).</p>
 								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
-								
+								<p>This shows that anything that does not match the threshold value (pure hex yellow) is set to black, then the remaining pixels are set to white and counted. It provides a visual for the user, which is much easier to understand.</p>
+								<p>Seen below (code snippet 7, which is very similar to the code above) is the actual color detection code, executed on every picture taken. Simplicity is the key for speed here. It merely takes the image as an integer array representing the pixel colors and calculates whether each pixel is within a range of a certain color, the color of the pollen. If the number of pixels within the range of a certain color is greater than a certain threshold, then there must have been pollen in the picture. We save the result of the “masked” image, which has black pixels out of range and white pixels in range, and display it to the screen. We also append that result (either it was above the threshold or it wasn’t) to the list.</p>
+								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
+								<p>Additionally, the end user needs to be able to adjust both the values for the desired color range and the absolute threshold value for the number of pixels, so we added numerous buttons to the screen to achieve this. Very few variables were hardcoded, nearly everything is adjustable from the screen view. The final default screen image is shown below (Figure 5).</p>
+								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
 							</div>
 						</div><!--// Your section has ended -->
-
+						<div class="yui-gf"> <!--// This is a section -->
+							<div class="yui-u first">
+								<h2>Testing</h2> <!--// put your heading here -->
+							</div>
+							<div class="yui-u">
+								<p>Much if not all of our initial testing was conducted using a dead bee glued to a stick with an apriltag glued on top of it (see figure 6 below).</p> <!--// Put Content here -->
+								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
+								<p>We also did a round of testing with live bees, which taught us to always use protective eyewear when being around bees and also that we needed to vastly decrease both our shutter time and our delay time (see figure 7 below).</p>
+								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
+								<p>Even after we have demoed our project, it will get the real test in the field this summer. As with all bio-tech experiments, only over a long period of time we can truly see how accurate our design was and what needs to change. </p>
+							</div>
+						</div><!--// Your section has ended -->
 						<div class="yui-gf"> <!--// This is a section -->
 							<div class="yui-u first">
 								<h2>Results</h2> <!--// put your heading here -->
