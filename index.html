@@ -112,6 +112,11 @@ Template for
 								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
 								<p>For this PiTFT screen, in addition to the controls stated above we also display the most recently processed tag ID number with the most recently processed file on the screen. Of course, it displays the most recent picture taken (which likely will not correspond to the most recently processed file or tag ID) as well as the date of the most recently taken picture, which allows for easier human debugging (see a picture of the default screen below in Figure 4). The real pictures replace the cartoon bee picture in the center.</p>
 								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
+								<p><i>SideCam.py</i></p>
+								<p>This code corresponds to the side camera and its respective light ring. This program is actually much simpler than the top camera because the image analysis we are doing on it runs much faster, eliminating the need for multithreading (although it could potentially be improved by running slower, more advanced algorithms and using multithreading as well). In this case we have two lists, one that is a string of the count concatenated with the boolean of whether it has pollen or not, the other is a timestamp for every time the sensor is tripped.</p>
+								<p>Another feature of this program is that it begins with a default image and a filtered version of the default image so that the user understands how the filtering works (see code snippet 6).</p>
+								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
+								
 							</div>
 						</div><!--// Your section has ended -->
 
