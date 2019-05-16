@@ -173,77 +173,53 @@ Template for
 							</div>
 						</div><!--// Your section has ended -->
 
-					<div class="yui-gf">
-						<div class="yui-u first">
-							<h2>Code Appendix</h2>
-						</div>
+						<div class="yui-gf"> <!--// This is a section -->
+							<div class="yui-u first">
+								<h2>Conclusion</h2> <!--// put your heading here -->
+							</div>
 							<div class="yui-u">
-							<!-- This is a good idea. HTML generated using hilite.me -->
-							<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #333333">*</span>
- <span style="color: #333333">*</span> blink.c<span style="color: #333333">:</span>
- <span style="color: #333333">*</span>      blinks the first LED
- <span style="color: #333333">*</span>      Gordon Henderson, projects<span style="color: #FF0000; background-color: #FFAAAA">@</span>drogon.net
- <span style="color: #FF0000; background-color: #FFAAAA">*/</span>
-
-<span style="color: #557799">#include &lt;stdio.h&gt;</span>
-<span style="color: #557799">#include &lt;wiringPi.h&gt;</span>
-
-<span style="color: #333399; font-weight: bold">int</span> main (<span style="color: #333399; font-weight: bold">void</span>)
-{
-  printf (<span style="background-color: #fff0f0">&quot;Raspberry Pi blink</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>) ;
-
-  <span style="color: #008800; font-weight: bold">if</span> (wiringPiSetup () <span style="color: #333333">==</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
-    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span> ;
-
-  pinMode (<span style="color: #0000DD; font-weight: bold">0</span>, OUTPUT) ;         <span style="color: #888888">// aka BCM_GPIO pin 17</span>
-
-  <span style="color: #008800; font-weight: bold">for</span> (;;)
-  {
-    digitalWrite (<span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">1</span>) ;       <span style="color: #888888">// On</span>
-    delay (<span style="color: #0000DD; font-weight: bold">500</span>) ;               <span style="color: #888888">// mS</span>
-    digitalWrite (<span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>) ;       <span style="color: #888888">// Off</span>
-    delay (<span style="color: #0000DD; font-weight: bold">500</span>) ;
-  }
-  <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span> ;
-}
-</pre></td></tr></table></div>
-
-						</div>
-					</div>
-					</div>
-
-					<div class="yui-gf">
-						<div class="yui-u first">
-							<h2>Contact</h2>
-						</div>
-						<div class="yui-u">
-						<p> Your good names. Probably Acknowledgments and Thanks </p>
+								<p>We succeeded in accomplishing the stated objectives of our project (as shown in the results section above).  While at the very end the monitor was unable to detect the tags by parsing the images in real-time, a significant portion of the project worked flawlessly and gives hope for a future, more robust version of the device.</p>
+								<p>The demo went as smoothly as it could have, and it put on display everything that we accomplished well. We were able to demonstrate the integrated box design and push a sample bee through the tunnel, and show the pictures taken of the bee from both angles. The GUIs worked as expected with their on-screen TFT buttons to adjust various parameters, and we were able to show that the pollen detection mechanism from the side camera to theoretically work, although we will only know when we have bees with real pollen sacs going through our tunnel. The only unsatisfying portion of our demonstration was the missed detection of the Apriltag.  </p>
+								<p>However, there is still much left to be improved upon. Both the software and the hardware were sufficient but nowhere close to optimal. Additionally, while we were limited by budgeting and time to a certain degree, in the future once the design is down for certain many things could probably be ordered cheaper than they are right now in “prototype” form.</p>
+								<p>First and foremost, the hardware. The wiring and the breadboard could all preferably be converted to a printed circuit board or at least neatly soldered wires in a perf board. The PiTFT screens could be significant bigger to improve user experience, especially on the side camera display as it is fairly critical that the user is able to see what changing the filtering values will do to the image. Also, some form of exterior casing that includes all the Pis, the PiTFT screens, and the circuitry will need to be added for protection against outdoor elements where this will be deployed. We also need to add some form of user voltage control for the lighting as it can be too bright or too dim at times. And perhaps most importantly, we need more tags. There’s a lot more than 50 bees in a hive, and we want to tag them all. But more on that in the software side.</p>
+								<p>The software side is a little more complex. With regards to tagging, we want a way to increase the number of tags without significantly increasing the amount of processing time it takes to determine what tag it is. One way to do this is to use the original 50 april tags, but add a colored trim around it that differentiates it in another unique way. 7 different colors multiplied by 50 tags is 350 tags, which is more toward the order of magnitude we are looking at tagging. Another easy fix would be to add a list of detections where the sensor is tripped, but no tag is detected. This would be very useful for debugging so that we would know how many bees were missing and when, or if we are missing a certain tag number, or tags at a certain time of day, or an issue like that. Additionally, both cameras it would incredibly useful if we could tell if more than one bee was in the image. This would require more analysis and more time, but given that we are not analyzing in real time anyways this would not be a significant drawback. The side camera could also use more advanced but slower algorithms with multithreading/backgrounding to better get an idea of how much pollen is on a bee.</p>
+								<p>Overall, this project was a success in that the goal was to get a working, functional prototype of something rarely, if ever, done before – tracking and logging data of unique individual bees. It is a beginning structure, not an end product. However, by the end of this summer, it will be much closer to the optimal end product and likely will be taken even further in research next semester in Professor Petersen’s research lab. We will be making more, better versions of these, likely with some added weighing tool, in the coming semester. We hope this tool will help us bette</p>
+							</div>
+						</div><!--// Your section has ended -->
+						
+						<div class="yui-gf"> <!--// This is a section -->
+							<div class="yui-u">
+								<h2>Code Appendix</h2> <!--// put your heading here -->
+								<p><i>BeeCam.py</i></p>
+								<p align = "center"><img src="images/BeeCam_part1.PNG"/> </p>
+								<p align = "center"><img src="images/BeeCam_part2.PNG"/> </p>
+								<p align = "center"><img src="images/BeeCam_part3.PNG"/> </p>
+								<p align = "center"><img src="images/BeeCam_part4.PNG"/> </p>
+								<p align = "center"><img src="images/BeeCam_part5.PNG"/> </p>
+								<p><i>BeeCam.py</i></p>
+								<p align = "center"><img src="images/SideCam_part1.PNG"/> </p>
+								<p align = "center"><img src="images/SideCam_part2.PNG"/> </p>
+								<p align = "center"><img src="images/SideCam_part3.PNG"/> </p>
+								<p align = "center"><img src="images/SideCam_part4.PNG"/> </p>
+								<p align = "center"><img src="images/SideCam_part5.PNG"/> </p>
+								<p align = "center"><img src="images/SideCam_part6.PNG"/> </p>
+								<p align = "center"><img src="images/SideCam_part7.PNG"/> </p>
+								<p><i>FileAnalyze.py</i></p>
+								<p align = "center"><img src="images/file_analyze.PNG"/> </p>
+								<p><i>FileAnalyze Bash Script</i></p>
+								<p align = "center"><img src="images/file_analyze_bash.PNG"/> </p>
+								
+							</div>
+							<div class="yui-u">
+								
+							</div>
+						</div><!--// Your section has ended -->
+						<div class="yui-gf">
+							<div class="yui-u first">
+								<h2>Contact</h2>
+							</div>
+							<div class="yui-u">
+							<p>Annie Kimmel (mak454@cornell.edu), Rajiv Kommareddy (rrk64@cornell.edu)</p>
 						</div>
 					</div>
 					</div>
