@@ -57,17 +57,17 @@ Template for
 						<div class="yui-gf"> <!--// This is a section -->
 							<div class="yui-u first">
 								<h2>Materials</h2> <!--// put your heading here -->
-								<ul>
-                                					<li>2 pairs of infrared break-beam sensors ($1.95 each)</li>
-                                					<li>2 Pi Camera V2s ($29.95 each)</li>
-                                					<li>2 LED light rings ($16.99 each)</li>
-                                					<li>2 Raspberry Pi B+s ($34.99 each)</li>
-                                					<li>2 PiTFT screens ($34.95 each)</li>
-									<li>Clear Acrylic ($2.50 per square foot)</li>
-									<li>Plywood ($3.00 per square foot)</li>
-									<li>Sharpie ($1.08)</li>
-									<li>Wires, glue, screws (price given amount used negligible)</li>
-                               					</ul>
+								
+                                					<p>2 pairs of infrared break-beam sensors ($1.95 each)</p>
+                                					<p>2 Pi Camera V2s ($29.95 each)</p>
+                                					<p>2 LED light rings ($16.99 each)</p>
+                                					<p>2 Raspberry Pi B+s ($34.99 each)</p>
+                                					<p>2 PiTFT screens ($34.95 each)</p>
+									<p>Clear Acrylic ($2.50 per square foot)</p>
+									<p>Plywood ($3.00 per square foot)</p>
+									<p>Sharpie ($1.08)</li>
+									<p>Wires, glue, screws (price given amount used negligible)</p>
+                               					
 							</div>
 						</div><!--// Your section has ended -->
 					
@@ -104,6 +104,10 @@ Template for
 								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
 								<p>Both contain virtual, on-screen buttons that allow the user to adjust the shutter speed and the delay in time between sensor tripping and the picture being taken. They both save all the pictures they take, and also write a log of their data to a file when quit is called (see code snippet 2). </p>
 								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
+								<p><i>BeeCam.py</i></p>
+								<p>This code corresponds to the top camera, which detects april tags and assigns the detection data to the bee matching the identified tag. In this code we have a Bee object that contains the bee’s logs of entry and exit times. We then have a list of Bee objects whose index in the list corresponds to its tag number and the time of the triggering is appended appropriately based on the sensor and tag number (see code snippet 3).</p>
+								<p><img src="images/incident.png" title="Ha Ha ... that's me" alt="This is a picture" width="420" height="200"/> </p>
+								<p>The most difficult part of this project was trying to make it so that the code could handle multiple bees in rapid succession. The apriltag processing functions were not exceptionally quick – it could take up to several seconds to fully process an image – especially with small, furry, fast moving objects. There was no way to speed of the tag processing without sacrificing accuracy. Instead, we utilized multithreading to take pictures a lot faster than the apriltag algorithm could run and began processing each picture as a background thread. We had the apriltag algorithms write the outcome of the processing to a text file named according to its corresponding picture (see code snippet 4). In addition to this file, we have a separate program that runs in the background which constantly checks to see if the outcome from the apriltags has been written to said file yet, and then makes its own file with a much simpler output that is easier to parse (it contains one line that is “tag: #” where the number is the tag detected or -1 else) making the in-system delay slower than it would be if it had to open the whole file. We shall refer to this file in the report as the “done” file. But the main reason for this is by having a separate program check for the apriltag outcome file creation, we can run it on a different thread than the main process and background it so that sensor detection is not delayed or inhibited.</p>
 							</div>
 						</div><!--// Your section has ended -->
 
